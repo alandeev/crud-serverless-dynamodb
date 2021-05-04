@@ -9,7 +9,11 @@ const main = async (event) => {
 
   const dep = main.dependencies();
 
-  const { email, password } = dep.validate(body)
+  const {
+    name,
+    email,
+    password
+  } = dep.validate(body)
 
   const userExist = await dep.getUserByEmail({ email });
   if (userExist) {
@@ -19,6 +23,7 @@ const main = async (event) => {
   const passwordEncrypted = await dep.bcryptjs.hash(password, 8);
 
   const userId = await dep.addUser({
+    name,
     email,
     password: passwordEncrypted
   });

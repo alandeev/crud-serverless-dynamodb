@@ -2,9 +2,8 @@ const Joi = require("joi")
 const { validate } = require('../../helpers');
 
 const schema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  password: Joi.string().required()
+  user_id: Joi.string().uuid().required(),
+  name: Joi.string().required()
 })
 
 const main = (body) => {

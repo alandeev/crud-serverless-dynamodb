@@ -4,8 +4,9 @@ const { v4: uuidv4 } = require('uuid');
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 const main = async ({
+  name,
   email,
-  password
+  password,
 }) => {
   const { dynamodb } = main.dependencies();
 
@@ -19,6 +20,7 @@ const main = async ({
       id,
       email,
       password,
+      name,
       created_at: now,
       updated_at: now
     }

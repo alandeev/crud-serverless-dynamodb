@@ -19,9 +19,16 @@ functions:
       - http:
           method: POST
           path: users
-  get-user:
-    handler: src/controllers/get-user/index.handler
+  get-users:
+    handler: src/controllers/get-users/index.handler
     events:
       - http:
           method: GET
+          path: users
+
+  update-users:
+    handler: src/controllers/update-user/index.handler
+    events:
+      - http:
+          method: PUT
           path: users
