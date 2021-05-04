@@ -1,0 +1,27 @@
+service: crud-dynamodb
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  region: us-east-1
+  environment:
+    DYNAMODB_TABLE_USERS: "users-sdx"
+
+plugins:
+  - serverless-offline
+
+functions:
+  create-user:
+    handler: src/controllers/create-user/index.handler
+    events:
+      - http:
+          method: POST
+          path: users
+  get-user:
+    handler: src/controllers/get-user/index.handler
+    events:
+      - http:
+          method: GET
+          path: users

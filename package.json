@@ -1,0 +1,17 @@
+{
+  "name": "crud-dynamodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "debug": "sls offline"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.899.0",
+    "joi": "^17.4.0",
+    "serverless-offline": "^7.0.0",
+    "uuid": "^8.3.2"
+  }
+}
