@@ -1,5 +1,6 @@
 const handlerWrapper = require('../../utils/handler-wrapper');
 const validate = require('./validate');
+const bcryptjs = require('bcryptjs')
 const userRepository = require('../../repositories/users');
 const { NotFoundError } = require('../../errors');
 
@@ -15,9 +16,11 @@ const main = async (event) => {
     throw new NotFoundError('Email already exists');
   }
 
+  const passwordEncrypted = await dep.bcryptjs.hash(password, 8);
+
   const userId = await dep.addUser({
     email,
-    password
+    password: passwordEncrypted
   });
 
   return {
@@ -31,6 +34,7 @@ const main = async (event) => {
 
 main.dependencies = () => ({
   validate,
+  bcryptjs,
   addUser: userRepository.add,
   getUserByEmail: userRepository.getByEmail
 })

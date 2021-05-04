@@ -1,5 +1,4 @@
 const handlerWrapper = require('../../utils/handler-wrapper');
-const validate = require('./validate');
 const userRepository = require('../../repositories/users');
 
 const main = async (event) => {
@@ -17,7 +16,7 @@ const main = async (event) => {
 }
 
 main.dependencies = () => ({
-  getUsers: userRepository.get
+  getUsers: userRepository.getAll
 })
 
 module.exports = {

@@ -1,7 +1,9 @@
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-const main = async ({ email }) => {
+const main = async ({
+  email
+}) => {
   const { dynamodb } = main.dependencies();
 
   const params = {

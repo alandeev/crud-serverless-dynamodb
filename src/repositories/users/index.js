@@ -1,9 +1,9 @@
 const add = require('./add');
 const getByEmail = require('./get-by-email')
-const get = require('./get')
+const getAll = require('./get')
 
 module.exports = {
   add,
-  get,
+  getAll,
   getByEmail
 }
