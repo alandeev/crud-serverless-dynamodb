@@ -14,6 +14,20 @@
 _...still writing_
 
 ### Routers implemented
-- [ PUT ] /users?user_id={id} -> Update name user by user_id
-- [ POST ] /users -> Create user { name, email, password }
-- [ GET ] /users -> Get all users
+```javascript
+// [POST] /users -> Create user
+{
+  name: String,
+  email: String,
+  password: String
+}
+
+// [DELETE] /users?user_id={id} -> delete user by id
+
+// [PUT] /users?user_id={id} -> Update name user by id
+{
+  name: String
+}
+
+// [GET] /users -> Get all users
+```
