@@ -16,7 +16,7 @@ const main = async (event) => {
 }
 
 main.dependencies = () => ({
-  getUsers: userRepository.getAll
+  getUsers: userRepository.all
 })
 
 module.exports = {

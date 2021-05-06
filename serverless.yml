@@ -32,3 +32,10 @@ functions:
       - http:
           method: PUT
           path: users
+
+  delete-users:
+    handler: src/controllers/delete-user/index.handler
+    events:
+      - http:
+          method: DELETE
+          path: users

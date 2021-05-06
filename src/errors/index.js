@@ -1,7 +1,9 @@
 const NotFoundError = require('./not-found')
-const ValidationError = require('./validation-error');
+const ValidationError = require('./validation');
+const BadRequestError = require('./bad-request');
 
 module.exports = {
-    NotFoundError,
-    ValidationError
+  NotFoundError,
+  ValidationError,
+  BadRequestError
 }

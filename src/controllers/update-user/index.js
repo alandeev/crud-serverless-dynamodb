@@ -1,6 +1,7 @@
 const handlerWrapper = require('../../utils/handler-wrapper');
 const userRepository = require('../../repositories/users')
 const validate = require('./validate');
+const { NotFoundError } = require('../../errors');
 
 const main = async (event) => {
   const dep = main.dependencies();
@@ -15,6 +16,14 @@ const main = async (event) => {
     name
   });
 
+  const user = await dep.getUserById({
+    user_id
+  })
+
+  if (!user) {
+    throw new NotFoundError('User not found')
+  }
+
   await dep.updateUser(data)
 
   return {
@@ -24,7 +33,8 @@ const main = async (event) => {
 
 main.dependencies = () => ({
   validate,
-  updateUser: userRepository.update
+  updateUser: userRepository.update,
+  getUserById: userRepository.getById
 })
 
 module.exports = {

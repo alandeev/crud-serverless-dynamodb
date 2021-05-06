@@ -1,20 +1,19 @@
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-const main = async () => {
+const main = async ({
+  user_id
+}) => {
   const { dynamodb } = main.dependencies();
 
-  const params = {
+  const result = await dynamodb.get({
     TableName: process.env.DYNAMODB_TABLE_USERS,
-    ProjectionExpression: "id, email, #name, created_at, updated_at",
-    ExpressionAttributeNames: {
-      "#name": "name"
+    Key: {
+      id: user_id
     }
-  }
+  }).promise()
 
-  const { Items: users } = await dynamodb.scan(params).promise()
-
-  return users;
+  return result.Item;
 }
 
 main.dependencies = () => ({
